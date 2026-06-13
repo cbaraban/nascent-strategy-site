@@ -1,0 +1,258 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const title = 'The Method | Nascent Strategy';
+const description =
+  'See it, solve it, build it. We diagnose where your business leaks revenue through two lenses, then build the fix.';
+
+const phases = [
+  {
+    id: 'see',
+    num: '01',
+    name: 'SEE',
+    headline: 'We look through two lenses, and both point at revenue.',
+    body: 'The first lens is your data. Most businesses are sitting on years of answers they’ve never been able to read: which customers are quietly leaving, where margin slips between quote and paid, what your market is doing right now. Sometimes the answer isn’t even in your building, so we bring our own market and industry data and marry it to yours. The second lens is your workflow. We watch how work actually happens and find where time turns into lost money: manual steps that software could erase, tools that do 90 percent of the job, processes everyone tolerates because they mostly work. We look through both before we form a single opinion.',
+    output: 'Output begins here: a clear-eyed picture of where revenue is leaking, in your data and in your day.',
+  },
+  {
+    id: 'solve',
+    num: '02',
+    name: 'SOLVE',
+    headline: 'Seeing the leak is not the same as knowing what to do about it.',
+    body: 'This is the strategy, and it’s what we’re known for. We take everything the two lenses surface and turn it into a ranked roadmap: each leak costed in real dollars, each paired with the fix that closes it and the return that fix should produce. Some leaks aren’t worth chasing, and we’ll tell you so. The point is not a longer list of problems. It’s a short list of the ones worth solving, in the order that pays you back fastest. A strategy firm stops here and hands you the deck. We don’t, because a roadmap nobody builds is just expensive paper.',
+    output: 'Output: The Revenue Roadmap. Your leaks, ranked by dollar value and effort, with a recommended first move.',
+  },
+  {
+    id: 'build',
+    num: '03',
+    name: 'BUILD',
+    headline: 'The fix lives inside your business, not in a slide deck.',
+    body: 'What we build takes one of two forms, depending on what the roadmap found. When the leak is a blind spot, we build insight tools: dashboards and visualizations that turn your scattered systems, and our market data, into a view you can finally act on. When the leak is friction, we build net-new software: custom tools and workflows that erase the manual steps and close the gap your current tools leave open. Either way it’s installed where your team already works, measured against the baseline we set, and tended over time, because embedded systems are living systems.',
+    output: 'Output: a working system, a measurement plan, and a standing optimization retainer.',
+  },
+];
+---
+
+<Base title={title} description={description}>
+  <!-- MTH-01 Hero -->
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow reveal">The Method</span>
+      <h1 class="reveal">See it. Solve it. Build it.</h1>
+      <p class="lede page-hero-sub reveal">
+        We&rsquo;re known for the seeing and trusted for the building. A
+        strategy firm that ships, and a software firm that diagnoses before it
+        touches a line of code. It works in any industry, because every
+        business leaks revenue somewhere.
+      </p>
+    </div>
+  </section>
+
+  <!-- MTH-02 through MTH-04: pinned sequence on desktop, stacked below 1024px -->
+  <section class="phases" id="phases">
+    <div class="phases-track" id="phases-track">
+      <div class="wrap phases-frame">
+        <div class="phase-rail" aria-hidden="true">
+          <span class="phase-rail-tick mono" id="phase-tick">01</span>
+          <span class="phase-rail-line"><span class="phase-rail-fill" id="phase-fill"></span></span>
+        </div>
+
+        <div class="phase-panels" id="phase-panels">
+          {phases.map((p, i) => (
+            <article class="phase-panel stagger" id={p.id} data-index={i}>
+              <p class="phase-label mono reveal">{p.num} / {p.name}</p>
+              <h2 class="phase-headline reveal">{p.headline}</h2>
+              <p class="phase-body reveal">{p.body}</p>
+              <p class="phase-output mono reveal">{p.output}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MTH-05 Measurement promise -->
+  <section class="section measure on-ink">
+    <div class="wrap grid measure-grid">
+      <div class="measure-copy">
+        <span class="eyebrow reveal">How We Keep Score</span>
+        <h2 class="reveal">Baseline first. Build second. Brag&nbsp;never.</h2>
+        <p class="measure-body reveal">
+          Before anything ships, we record the number as it stands today: the
+          revenue, the hours, the rate, whatever the leak was costing you.
+          After it ships, we measure what changed. That&rsquo;s the whole
+          trick. It means our results are checkable, our retainers earn their
+          keep, and you never have to take our word for anything.
+        </p>
+      </div>
+      <div class="measure-metric reveal">
+        <!-- [PLACEHOLDER] Sample metric figure, founder to confirm -->
+        <p class="metric-figure mono figure-ember" data-countup="184000" data-prefix="$">$184,000</p>
+        <p class="metric-caption mono">The only language we report in.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MTH-06 Stack explanation -->
+  <section class="section stack">
+    <div class="wrap grid stack-grid">
+      <div class="stack-lead">
+        <span class="eyebrow reveal">What &ldquo;AI&rdquo; Actually Means Here</span>
+        <h2 class="reveal">One platform, mastered. Two layers, deliberate.</h2>
+      </div>
+      <div class="stack-body reveal">
+        <p>
+          We build on Anthropic&rsquo;s Claude platform, deep rather than
+          wide. Layer one lives where your team works: a secure Claude
+          workspace with custom skills, agents, and connections to your tools,
+          so your people get leverage on day one. Layer two is custom software
+          built on the Claude API: the dashboards, monitors, and embedded
+          tools that run your specific fix. Your data stays yours, structured
+          in systems you control, portable by design. We&rsquo;re opinionated
+          about the platform so you don&rsquo;t have to be.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MTH-07 Closing CTA -->
+  <CtaSection
+    headline="It starts with a four-week assessment."
+    ctaLabel="See the assessment"
+    ctaHref="/assessment"
+  />
+</Base>
+
+<style>
+  .page-hero {
+    padding-top: calc(var(--section-pad) * 1.1);
+    padding-bottom: var(--section-pad);
+  }
+  .page-hero h1 { max-width: 14ch; margin-top: 0; }
+  .page-hero-sub { margin-top: 1.75rem; max-width: 52ch; }
+
+  /* Phases: stacked by default (mobile, no-JS); JS pins on >=1024px */
+  .phases { border-top: 1px solid var(--hairline); }
+  .phases-frame {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    column-gap: clamp(1.5rem, 4vw, 4rem);
+  }
+  .phase-rail { display: none; }
+
+  .phase-panel {
+    padding-block: calc(var(--section-pad) * 0.75);
+    max-width: 760px;
+  }
+  .phase-panel + .phase-panel { border-top: 1px solid var(--hairline); }
+
+  .phase-label {
+    font-size: var(--text-eyebrow);
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--signal);
+    margin-bottom: 1.5rem;
+  }
+  .phase-headline { font-size: clamp(1.75rem, 3vw, 2.5rem); max-width: 20ch; }
+  .phase-body { margin-top: 1.5rem; color: var(--slate); max-width: 62ch; }
+  .phase-output {
+    margin-top: 2rem;
+    padding: 1.125rem 1.375rem;
+    border: 1px solid var(--hairline);
+    border-left: 2px solid var(--signal);
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 56ch;
+  }
+
+  /* Desktop pinned layout, activated by JS via .is-pinned */
+  @media (min-width: 1024px) {
+    .phases-frame { grid-template-columns: 72px minmax(0, 1fr); }
+
+    .phases.is-pinned .phases-track {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .phases.is-pinned .phases-frame { width: 100%; }
+    .phases.is-pinned .phase-rail {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      height: 60vh;
+    }
+    .phase-rail-tick {
+      font-size: 0.8125rem;
+      color: var(--signal);
+      letter-spacing: 0.08em;
+    }
+    .phase-rail-line {
+      position: relative;
+      flex: 1;
+      width: 1px;
+      background: var(--hairline);
+    }
+    .phase-rail-fill {
+      position: absolute;
+      inset: 0;
+      background: var(--signal);
+      transform-origin: top;
+      transform: scaleY(0);
+    }
+
+    .phases.is-pinned .phase-panels {
+      position: relative;
+      display: grid;
+    }
+    .phases.is-pinned .phase-panel {
+      grid-area: 1 / 1;
+      border-top: 0;
+      padding-block: 0;
+    }
+    .phases.is-pinned .phase-panel:not(.is-active) {
+      opacity: 0;
+      filter: blur(6px);
+      pointer-events: none;
+    }
+  }
+
+  /* MTH-05 */
+  .measure-grid { row-gap: 3rem; align-items: center; }
+  .measure-copy { grid-column: 1 / span 6; }
+  .measure-body { margin-top: 1.5rem; color: var(--slate-on-ink); }
+  .measure-metric {
+    grid-column: 8 / -1;
+    border-left: 1px solid var(--hairline-on-ink);
+    padding-left: clamp(1.5rem, 3vw, 3rem);
+  }
+  .metric-figure {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .metric-caption {
+    margin-top: 1.25rem;
+    font-size: 0.8125rem;
+    letter-spacing: 0.05em;
+    color: var(--slate-on-ink);
+  }
+
+  /* MTH-06 */
+  .stack-grid { row-gap: 2rem; }
+  .stack-lead { grid-column: 1 / span 5; }
+  .stack-body { grid-column: 7 / -1; color: var(--slate); align-self: end; }
+
+  @media (max-width: 1023px) {
+    .phases-frame { grid-template-columns: 1fr; }
+    .measure-copy, .measure-metric, .stack-lead, .stack-body { grid-column: 1 / -1; }
+    .measure-metric { border-left: 0; padding-left: 0; }
+  }
+</style>
+
+<script>
+  import '../scripts/method.js';
+</script>

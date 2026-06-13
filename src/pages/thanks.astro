@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+
+/* No-JS fallback landing for the contact form POST. Mirrors the success
+   state copy from 6.7. Excluded from the sitemap, noindex. */
+
+const title = 'Book an Assessment | Nascent Strategy';
+---
+
+<Base title={title}>
+  <meta slot="head" name="robots" content="noindex" />
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow reveal">Get Started</span>
+      <h1 class="thanks-h1 reveal">Got it. We&rsquo;ll reply within one business day.</h1>
+      <p class="lede thanks-sub reveal">
+        In the meantime, <a class="link-draw" href="/method">the Method page</a>
+        is the fastest way to see how we&rsquo;d approach it.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-hero {
+    padding-top: calc(var(--section-pad) * 1.1);
+    padding-bottom: calc(var(--section-pad) * 1.5);
+    min-height: 55vh;
+  }
+  .thanks-h1 { font-size: clamp(2.25rem, 4.5vw, 3.5rem); max-width: 18ch; }
+  .thanks-sub { margin-top: 1.75rem; max-width: 48ch; }
+</style>

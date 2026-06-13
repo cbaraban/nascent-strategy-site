@@ -1,0 +1,114 @@
+---
+import Base from '../../layouts/Base.astro';
+import CtaSection from '../../components/CtaSection.astro';
+
+/* PRF-03: repeatable case study detail template, wired to the pilot
+   placeholder. Duplicate this file per published study. */
+
+const title = 'Proof | Nascent Strategy';
+---
+
+<Base title={title}>
+  <article>
+    <section class="page-hero">
+      <div class="wrap">
+        <span class="eyebrow reveal">Proof / Case Study</span>
+        <!-- [PLACEHOLDER] Pilot case study title -->
+        <h1 class="case-h1 reveal">[PLACEHOLDER: Pilot case study title]</h1>
+      </div>
+    </section>
+
+    <div class="wrap case-body">
+      <section class="case-section reveal">
+        <h2 class="case-label mono">The Leak</h2>
+        <p class="case-text">[PLACEHOLDER: Where revenue was being lost, in plain terms.]</p>
+      </section>
+
+      <section class="case-section reveal">
+        <h2 class="case-label mono">What We Saw</h2>
+        <p class="case-text">[PLACEHOLDER: What the two lenses surfaced.]</p>
+      </section>
+
+      <section class="case-section reveal">
+        <h2 class="case-label mono">What We Built</h2>
+        <p class="case-text">[PLACEHOLDER: The insight tool or the net-new software.]</p>
+      </section>
+
+      <section class="case-section case-number on-ink reveal">
+        <h2 class="case-label mono">The Number</h2>
+        <div class="case-metrics">
+          <div>
+            <p class="case-metric-label mono">Baseline</p>
+            <p class="case-metric mono">[PLACEHOLDER]</p>
+          </div>
+          <div>
+            <p class="case-metric-label mono">Result</p>
+            <p class="case-metric mono figure-ember">[PLACEHOLDER]</p>
+          </div>
+          <div>
+            <p class="case-metric-label mono">Timeframe</p>
+            <p class="case-metric mono">[PLACEHOLDER]</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </article>
+
+  <CtaSection
+    headline="The next number on this page could be yours."
+    ctaLabel="See the assessment"
+    ctaHref="/assessment"
+  />
+</Base>
+
+<style>
+  .page-hero {
+    padding-top: calc(var(--section-pad) * 1.1);
+    padding-bottom: calc(var(--section-pad) * 0.6);
+  }
+  .case-h1 { font-size: clamp(2.25rem, 4.5vw, 3.5rem); max-width: 22ch; }
+
+  .case-body { padding-bottom: var(--section-pad); }
+  .case-section {
+    padding-block: 3.5rem;
+    border-top: 1px solid var(--hairline);
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    gap: 2rem;
+  }
+  .case-label {
+    font-size: var(--text-eyebrow);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--signal);
+    font-variation-settings: normal;
+  }
+  .case-text { color: var(--slate); max-width: 58ch; }
+
+  .case-number {
+    border: 0;
+    border-radius: var(--radius);
+    padding: 3rem;
+    margin-top: 1rem;
+    display: block;
+  }
+  .case-number .case-label { color: var(--slate-on-ink); }
+  .case-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .case-metric-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--slate-on-ink);
+  }
+  .case-metric { margin-top: 0.75rem; font-size: 1.5rem; }
+
+  @media (max-width: 768px) {
+    .case-section { grid-template-columns: 1fr; gap: 1rem; }
+    .case-metrics { grid-template-columns: 1fr; }
+  }
+</style>

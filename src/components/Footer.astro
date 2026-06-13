@@ -1,0 +1,96 @@
+---
+// Footer copy verbatim from FRD 6.1. Email and LinkedIn are founder placeholders.
+---
+
+<footer class="site-footer on-ink">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <p class="footer-wordmark mono">NASCENT <span>STRATEGY</span></p>
+        <p class="footer-positioning">
+          We find where your business loses revenue, then build the software
+          that stops it.
+        </p>
+        <p class="footer-place mono">Kansas City, built for anywhere.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer">
+        <a class="link-draw" href="/method">Method</a>
+        <a class="link-draw" href="/assessment">Assessment</a>
+        <a class="link-draw" href="/work">Proof</a>
+        <a class="link-draw" href="/about">About</a>
+        <a class="link-draw" href="/contact">Contact</a>
+      </nav>
+
+      <div class="footer-contact">
+        <!-- [PLACEHOLDER] Founder to supply email and LinkedIn URL -->
+        <a class="link-draw" href="mailto:hello@nascentstrategy.com">[Email placeholder]</a>
+        <a class="link-draw" href="https://www.linkedin.com" rel="noopener">[LinkedIn placeholder]</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <a class="link-draw" href="/privacy">Privacy</a>
+      <p class="footer-legal">&copy; 2026 Nascent Strategy LLC</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { padding: 5rem 0 2.5rem; }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) auto auto;
+    gap: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .footer-wordmark {
+    font-size: 0.875rem;
+    letter-spacing: 0.14em;
+    margin-bottom: 1.25rem;
+  }
+  .footer-wordmark span { color: var(--slate-on-ink); }
+
+  .footer-positioning {
+    max-width: 36ch;
+    color: var(--slate-on-ink);
+    font-size: 0.9375rem;
+  }
+  .footer-place {
+    margin-top: 1.5rem;
+    font-size: 0.8125rem;
+    letter-spacing: 0.06em;
+    color: var(--slate-on-ink);
+  }
+
+  .footer-nav, .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    align-items: flex-start;
+  }
+  .footer-nav a, .footer-contact a {
+    font-size: 0.9375rem;
+    color: var(--paper);
+    width: fit-content;
+  }
+  .footer-contact a { color: var(--slate-on-ink); }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--hairline-on-ink);
+    font-size: 0.8125rem;
+    color: var(--slate-on-ink);
+  }
+  .footer-bottom a { color: var(--slate-on-ink); width: fit-content; }
+  .footer-legal { margin-left: auto; }
+
+  @media (max-width: 768px) {
+    .footer-top { grid-template-columns: 1fr; gap: 2.5rem; padding-bottom: 3rem; }
+  }
+</style>

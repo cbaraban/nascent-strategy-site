@@ -1,0 +1,44 @@
+---
+const {
+  headline,
+  body = '',
+  ctaLabel,
+  ctaHref,
+  eyebrow = '',
+} = Astro.props;
+---
+
+<section class="cta-section on-ink">
+  <div class="wrap cta-inner">
+    {eyebrow && <span class="eyebrow reveal">{eyebrow}</span>}
+    <h2 class="cta-headline reveal">{headline}</h2>
+    {body && <p class="cta-body lede reveal">{body}</p>}
+    <p class="cta-action reveal">
+      <a class="btn btn-primary" href={ctaHref}>
+        {ctaLabel}
+        <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    padding-block: calc(var(--section-pad) * 1.15);
+    text-align: left;
+  }
+  .cta-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cta-headline {
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    max-width: 18ch;
+  }
+  .cta-headline.reveal { transition-delay: 0ms; }
+  .cta-body { margin-top: 1.5rem; max-width: 52ch; transition-delay: 90ms; }
+  .cta-action { margin-top: 2.5rem; transition-delay: 180ms; }
+</style>

@@ -1,0 +1,142 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const title = 'About | Nascent Strategy';
+const description =
+  'Nascent: coming into existence. What we believe and why we built this.';
+---
+
+<Base title={title} description={description}>
+  <!-- ABT-01 Hero -->
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow reveal">About</span>
+      <h1 class="about-h1 reveal">
+        Nascent: coming into existence. Beginning to show signs of potential.
+      </h1>
+      <p class="lede page-hero-sub reveal">
+        Every business we walk into already has the potential sitting in its
+        systems and its people. Our whole job is helping it emerge, then
+        building what makes it real.
+      </p>
+    </div>
+  </section>
+
+  <!-- ABT-02 Point of view -->
+  <section class="section beliefs">
+    <div class="wrap">
+      <h2 class="reveal">Three things we believe</h2>
+      <ol class="belief-list stagger">
+        <li class="belief reveal">
+          <span class="belief-num mono" aria-hidden="true">01</span>
+          <h3>Revenue problems beat technology answers.</h3>
+          <p>
+            Nobody needs AI. People need the quiet leaks closed: the customers
+            who slip away, the hours that vanish into busywork, the tool that
+            almost works. Technology is how, never why.
+          </p>
+        </li>
+        <li class="belief reveal">
+          <span class="belief-num mono" aria-hidden="true">02</span>
+          <h3>The answer is usually closer than it looks.</h3>
+          <p>
+            Sometimes it&rsquo;s buried in years of your own records. Sometimes
+            it&rsquo;s a workflow nobody&rsquo;s questioned. Sometimes it&rsquo;s
+            in the market around you. We&rsquo;d rather find it than bring a
+            stack of opinions.
+          </p>
+        </li>
+        <li class="belief reveal">
+          <span class="belief-num mono" aria-hidden="true">03</span>
+          <h3>If it can&rsquo;t be measured, it didn&rsquo;t happen.</h3>
+          <p>
+            We baseline before we build and measure after we ship. It keeps
+            us honest and it keeps you in control.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ABT-03 Founder block -->
+  <section class="section founder">
+    <div class="wrap grid founder-grid">
+      <div class="founder-photo reveal" role="img" aria-label="Founder photo placeholder">
+        <!-- [PLACEHOLDER] Founder photo: the single photograph on the site -->
+        <span class="founder-photo-note mono">[PLACEHOLDER: Founder photo]</span>
+      </div>
+      <div class="founder-copy reveal">
+        <!-- [PLACEHOLDER] Founder name and bio, founder to supply -->
+        <h2>[PLACEHOLDER: Founder name]</h2>
+        <p class="founder-bio">
+          [PLACEHOLDER: Founder to supply. Suggested angle: two decades across
+          product strategy, brand, and software delivery; builds and runs
+          companies in Kansas City; started Nascent because operators deserve
+          the same revenue and efficiency leverage that enterprises buy, at a
+          price and pace built for the people actually running the business.]
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABT-04 Closing CTA -->
+  <CtaSection
+    headline="Start with where it hurts."
+    ctaLabel="Book an assessment"
+    ctaHref="/contact"
+  />
+</Base>
+
+<style>
+  .page-hero {
+    padding-top: calc(var(--section-pad) * 1.1);
+    padding-bottom: var(--section-pad);
+  }
+  .about-h1 { font-size: clamp(2.5rem, 5vw, 4.25rem); max-width: 18ch; }
+  .page-hero-sub { margin-top: 1.75rem; max-width: 46ch; }
+
+  .beliefs { border-top: 1px solid var(--hairline); }
+  .belief-list {
+    list-style: none;
+    margin: 3.5rem 0 0;
+    padding: 0;
+  }
+  .belief {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 5fr) minmax(0, 6fr);
+    gap: 2rem;
+    padding-block: 2.75rem;
+    border-top: 1px solid var(--hairline);
+  }
+  .belief-num { color: var(--signal); font-size: 0.8125rem; padding-top: 0.4em; }
+  .belief h3 { max-width: 18ch; }
+  .belief p { color: var(--slate); }
+
+  .founder { padding-top: 0; }
+  .founder-grid { row-gap: 2.5rem; align-items: center; }
+  .founder-photo {
+    grid-column: 1 / span 5;
+    aspect-ratio: 4 / 5;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: radial-gradient(rgba(17, 21, 28, 0.1) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  .founder-photo-note {
+    font-size: 0.75rem;
+    color: var(--slate);
+    letter-spacing: 0.06em;
+  }
+  .founder-copy { grid-column: 7 / -1; }
+  .founder-bio { margin-top: 1.5rem; color: var(--slate); }
+
+  @media (max-width: 1023px) {
+    .belief { grid-template-columns: 1fr; gap: 1rem; }
+    .founder-photo, .founder-copy { grid-column: 1 / -1; }
+    .founder-photo { max-width: 420px; }
+  }
+</style>

@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const {
+  title,
+  description = 'We find where your business loses revenue, then build the software that stops it. Kansas City, built for anywhere.',
+  schema = null,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/og.png', Astro.site);
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Preload only the two fonts on the hero/LCP path. Mono (eyebrows,
+         captions) is small and below the fold; it loads on demand with swap. -->
+    <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nascent Strategy" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script is:inline>document.documentElement.classList.remove('no-js');</script>
+    <slot name="head" />
+
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+
+    <!-- [FOUNDER TO CONFIRM] GA4 via Google Tag Manager. Founder manages GTM directly.
+         Insert GTM container snippet here once the container ID is supplied. -->
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header path={path} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      import '../scripts/global.js';
+    </script>
+  </body>
+</html>

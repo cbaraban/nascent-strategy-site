@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = 'Privacy | Nascent Strategy';
+---
+
+<Base title={title}>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow reveal">Legal</span>
+      <h1 class="privacy-h1 reveal">Privacy Policy</h1>
+      <div class="privacy-body reveal">
+        <!-- [PLACEHOLDER] Legal: founder to supply privacy policy text and
+             confirm entity name "Nascent Strategy LLC" -->
+        <p class="mono placeholder-note">
+          [PLACEHOLDER: Privacy policy text. Founder to supply with legal counsel.]
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-hero {
+    padding-top: calc(var(--section-pad) * 1.1);
+    padding-bottom: calc(var(--section-pad) * 1.5);
+    min-height: 55vh;
+  }
+  .privacy-h1 { font-size: clamp(2.25rem, 4.5vw, 3.5rem); }
+  .privacy-body { margin-top: 2.5rem; }
+  .placeholder-note { color: var(--slate); font-size: 0.875rem; }
+</style>

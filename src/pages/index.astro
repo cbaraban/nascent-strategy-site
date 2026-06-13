@@ -1,0 +1,466 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const title = 'Nascent Strategy | AI Strategy and Software for Operators';
+const description =
+  'We find where your business loses revenue, then build the software that stops it. Kansas City, built for anywhere.';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://nascentstrategy.com/#org',
+      name: 'Nascent Strategy',
+      legalName: 'Nascent Strategy LLC',
+      url: 'https://nascentstrategy.com',
+      slogan:
+        'We find where your business loses revenue, then build the software that stops it.',
+      address: { '@type': 'PostalAddress', addressLocality: 'Kansas City', addressCountry: 'US' },
+    },
+    {
+      '@type': 'ProfessionalService',
+      name: 'Nascent Strategy',
+      url: 'https://nascentstrategy.com',
+      description:
+        'AI strategy and implementation consultancy for small and medium-sized businesses.',
+      areaServed: 'United States',
+      parentOrganization: { '@id': 'https://nascentstrategy.com/#org' },
+    },
+  ],
+};
+
+/* Resolve Chart geometry (7.5). Deterministic seeded layout so the
+   server-rendered final state and the JS animation share coordinates. */
+function mulberry32(seed) {
+  return function () {
+    seed |= 0;
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+const rand = mulberry32(20260612);
+const W = 640;
+const H = 400;
+const X0 = 48;
+const X1 = 584;
+const Y0 = 332;
+const Y1 = 96;
+const CX = 360;
+const CY = 320;
+function trendPoint(t) {
+  const x = (1 - t) * (1 - t) * X0 + 2 * (1 - t) * t * CX + t * t * X1;
+  const y = (1 - t) * (1 - t) * Y0 + 2 * (1 - t) * t * CY + t * t * Y1;
+  return { x, y };
+}
+const POINTS = Array.from({ length: 60 }, (_, i) => {
+  const t = i / 59;
+  const p = trendPoint(t);
+  const jitter = (rand() - 0.5) * 14;
+  return {
+    fx: +p.x.toFixed(1),
+    fy: +(p.y + jitter).toFixed(1),
+    sx: +(X0 + rand() * (X1 - X0)).toFixed(1),
+    sy: +(70 + rand() * (H - 130)).toFixed(1),
+    r: rand() > 0.82 ? 3 : 2.2,
+  };
+});
+const TREND_D = `M ${X0} ${Y0} Q ${CX} ${CY} ${X1} ${Y1}`;
+---
+
+<Base title={title} description={description} schema={schema}>
+  <script is:inline slot="head">
+    (function () {
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('resolve-pending');
+        setTimeout(function () {
+          document.documentElement.classList.remove('resolve-pending');
+        }, 2000);
+      }
+    })();
+  </script>
+
+  <!-- HOME-01 Hero -->
+  <section class="hero" id="hero">
+    <canvas class="hero-field" id="hero-field" aria-hidden="true"></canvas>
+    <div class="hero-texture" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <span class="eyebrow hero-eyebrow hero-support">AI Strategy and Software for Operators</span>
+      <h1 class="hero-h1 resolve-target" id="resolve-h1">Your business is losing revenue in places you can&rsquo;t see.</h1>
+      <p class="hero-sub lede hero-support">
+        Some of it is trapped in data you already own, trends no report has
+        ever shown you. Some of it leaks through workflows that run slow,
+        manual, or on software that almost fits. We find both. Then we build
+        the tools that stop the loss.
+      </p>
+      <div class="hero-ctas hero-support">
+        <a class="btn btn-primary" href="/contact">
+          Book an assessment
+          <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="btn btn-ghost" href="/method">See how it works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOME-02 Problem statement -->
+  <section class="section problem">
+    <div class="wrap grid problem-grid">
+      <h2 class="problem-pull reveal">
+        Most businesses don&rsquo;t lose revenue dramatically. They lose it
+        quietly, in two places nobody&rsquo;s watching.
+      </h2>
+      <div class="problem-copy reveal">
+        <p>
+          The first is sight. Years of records hold trends you&rsquo;ve never
+          been able to read: who&rsquo;s quietly leaving, where margin
+          disappears, what your market is doing while you&rsquo;re heads-down
+          running the place. The second is friction. The process that still
+          runs on a spreadsheet. The tool everyone tolerates because it does
+          most of what they need. The ten minutes per task that, multiplied
+          across a team and a year, is a salary.
+        </p>
+        <p>
+          Neither leak announces itself. Both cost real money. We find them,
+          and we build what closes them.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr wrap-rule" />
+
+  <!-- HOME-03 Method strip -->
+  <section class="section method-strip">
+    <div class="wrap">
+      <span class="eyebrow reveal">The Method</span>
+      <h2 class="reveal">See. Solve. Build.</h2>
+      <div class="method-cards stagger">
+        <a class="card method-card reveal" href="/method#see">
+          <span class="method-num mono" aria-hidden="true">01</span>
+          <h3 class="method-name">SEE</h3>
+          <p>
+            We look at your business through two lenses: what you can&rsquo;t
+            see in your data, and where your team loses time to friction. Both
+            come down to revenue.
+          </p>
+          <span class="method-link link-draw">How it works</span>
+        </a>
+        <a class="card method-card reveal" href="/method#solve">
+          <span class="method-num mono" aria-hidden="true">02</span>
+          <h3 class="method-name">SOLVE</h3>
+          <p>
+            We turn what we find into a ranked roadmap of leaks, each one
+            costed in dollars, each paired with the fix and the return.
+            Strategy first, always, never a build for its own sake.
+          </p>
+          <span class="method-link link-draw">How it works</span>
+        </a>
+        <a class="card method-card reveal" href="/method#build">
+          <span class="method-num mono" aria-hidden="true">03</span>
+          <h3 class="method-name">BUILD</h3>
+          <p>
+            We build what the roadmap calls for and install it inside your
+            business. Dashboards that finally show you the truth, or custom
+            software that erases the friction. Every build ships with a
+            baseline, so the return is provable.
+          </p>
+          <span class="method-link link-draw">How it works</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOME-04 Worked example: the signature moment -->
+  <section class="section worked">
+    <div class="wrap">
+      <div class="grid worked-grid">
+        <div class="worked-copy">
+          <span class="eyebrow reveal">What This Looks Like</span>
+          <h2 class="reveal">Two businesses. Two leaks. One craft.</h2>
+          <div class="worked-body reveal">
+            <p>
+              A services company knew its revenue was softening but not why.
+              The answer wasn&rsquo;t in any report they ran. It was in three
+              years of records nobody had ever put side by side: a specific
+              kind of client was quietly leaving in their second year, and the
+              pattern that predicted it was visible months in advance. We
+              didn&rsquo;t hand them a study. We built a view that flags the
+              next ones while there&rsquo;s still time to act.
+            </p>
+            <p>
+              A different company wasn&rsquo;t missing an insight. It was
+              bleeding hours. A core process ran half inside a tool that did
+              most of the job and half inside a chain of manual steps that
+              filled the gap. Nobody questioned it, because it mostly worked.
+              We built the software that closed the gap, and gave the team back
+              days a month they never knew they were spending.
+            </p>
+          </div>
+          <p class="worked-cta reveal">
+            <a class="btn btn-ghost" href="/assessment">See the assessment</a>
+          </p>
+        </div>
+
+        <figure class="worked-viz on-ink reveal" id="resolve-chart-panel">
+          <svg
+            id="resolve-chart"
+            viewBox={`0 0 ${W} ${H}`}
+            role="img"
+            aria-label="Chart: scattered records resolving into a clear trend, the kind of revenue leak the work surfaces and puts a dollar figure on"
+          >
+            <path
+              id="trend-line"
+              d={TREND_D}
+              fill="none"
+              stroke="var(--signal)"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <g id="chart-points">
+              {POINTS.map((p) => (
+                <circle
+                  cx={p.fx}
+                  cy={p.fy}
+                  r={p.r}
+                  data-sx={p.sx}
+                  data-sy={p.sy}
+                  fill="rgba(250, 250, 247, 0.38)"
+                />
+              ))}
+            </g>
+            <!-- [PLACEHOLDER metric] Founder to confirm the Resolve Chart figure -->
+            <text
+              id="chart-figure"
+              x={X1}
+              y={Y1 - 28}
+              text-anchor="end"
+              class="chart-figure"
+            >$412,000</text>
+          </svg>
+          <figcaption class="worked-caption mono" id="chart-caption">
+            One business needed to see. The other needed a tool that
+            didn&rsquo;t exist yet. Both were losing revenue.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr wrap-rule" />
+
+  <!-- HOME-05 Assessment teaser -->
+  <section class="section teaser">
+    <div class="wrap grid teaser-grid">
+      <div class="teaser-lead">
+        <span class="eyebrow reveal">The First Step</span>
+        <h2 class="reveal">The Revenue Assessment</h2>
+      </div>
+      <div class="teaser-body reveal">
+        <p>
+          Four weeks. Fixed fee. We look at your business through both lenses
+          and hand you a ranked roadmap: where you&rsquo;re losing revenue,
+          what each leak is worth, and what it would take to close it. $9,500,
+          no hourly billing, no scope creep. The roadmap is yours whether you
+          build with us or not.
+        </p>
+        <p class="teaser-cta">
+          <a class="btn btn-primary" href="/assessment">
+            See what&rsquo;s included
+            <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr wrap-rule" />
+
+  <!-- HOME-06 Proof teaser -->
+  <section class="section teaser">
+    <div class="wrap grid teaser-grid">
+      <div class="teaser-lead">
+        <span class="eyebrow reveal">Proof</span>
+        <h2 class="reveal">Measured before. Measured after. No&nbsp;adjectives.</h2>
+      </div>
+      <div class="teaser-body reveal">
+        <p>
+          Every engagement ships with its own evidence. We record the number
+          before we build, then measure what changed. The work speaks in
+          dollars and hours, not buzzwords.
+        </p>
+        <p class="teaser-cta">
+          <a class="btn btn-ghost" href="/work">See the proof</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOME-07 Closing CTA -->
+  <CtaSection
+    headline="Where is your business losing revenue right now?"
+    body="You probably have a suspicion. We&rsquo;re built to find out for certain, then do something about it. That&rsquo;s where every engagement starts."
+    ctaLabel="Book an assessment"
+    ctaHref="/contact"
+  />
+</Base>
+
+<style>
+  /* HOME-01 */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    margin-top: -72px; /* sit beneath the transparent sticky header */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-field,
+  .hero-texture {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  /* Static sparse dot-grid texture: shown when JS is off or motion is reduced */
+  .hero-texture {
+    display: none;
+    background-image: radial-gradient(rgba(17, 21, 28, 0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
+    -webkit-mask-image: radial-gradient(ellipse 75% 65% at 62% 38%, black 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse 75% 65% at 62% 38%, black 30%, transparent 75%);
+  }
+  html.no-js .hero-texture { display: block; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-texture { display: block; }
+    .hero-field { display: none; }
+  }
+
+  .hero-inner {
+    position: relative;
+    width: 100%;
+    padding-top: 72px;
+  }
+  .hero-eyebrow { margin-bottom: 2rem; }
+  .hero-h1 { max-width: 13ch; }
+  .hero-h1 :global(.word) { display: inline-block; }
+  .hero-sub { margin-top: 2rem; max-width: 56ch; }
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    margin-top: 2.75rem;
+  }
+
+  /* HOME-02 */
+  .problem { padding-top: calc(var(--section-pad) * 0.75); }
+  .problem-grid { row-gap: 2.5rem; }
+  .problem-pull {
+    grid-column: 1 / span 7;
+    font-size: clamp(2rem, 3.6vw, 3rem);
+    line-height: 1.12;
+  }
+  .problem-copy {
+    grid-column: 9 / -1;
+    align-self: end;
+    color: var(--slate);
+  }
+
+  .wrap-rule {
+    max-width: calc(var(--max-width) - 2 * var(--gutter));
+    margin-inline: auto;
+  }
+
+  /* HOME-03 */
+  .method-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 3.5rem;
+  }
+  .method-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    text-decoration: none;
+    min-height: 280px;
+  }
+  .method-num { color: var(--slate); font-size: 0.8125rem; }
+  .method-name {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 1.0625rem;
+    letter-spacing: 0.12em;
+    font-variation-settings: normal;
+  }
+  .method-card p {
+    color: var(--slate);
+    font-size: 0.9844rem;
+    flex-grow: 1;
+  }
+  .method-link {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--signal);
+    width: fit-content;
+    background-size: 0% 1px;
+  }
+  .method-card:hover .method-link { background-size: 100% 1px; }
+
+  /* HOME-04 */
+  .worked-grid { row-gap: 3rem; align-items: center; }
+  .worked-copy { grid-column: 1 / span 5; }
+  .worked-body { margin-top: 1.75rem; color: var(--slate); }
+  .worked-cta { margin-top: 2.25rem; }
+  .worked-viz {
+    grid-column: 7 / -1;
+    border-radius: var(--radius);
+    padding: 2.5rem 2.5rem 2rem;
+    margin: 0;
+  }
+  .worked-viz svg { width: 100%; height: auto; }
+  .chart-figure {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 2.375rem;
+    letter-spacing: 0.01em;
+    fill: var(--ember);
+  }
+  .worked-caption {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--hairline-on-ink);
+    color: var(--slate-on-ink);
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* HOME-05 / HOME-06 */
+  .teaser-grid { row-gap: 2rem; }
+  .teaser-lead { grid-column: 1 / span 6; }
+  .teaser-lead h2 { max-width: 16ch; }
+  .teaser-body { grid-column: 8 / -1; color: var(--slate); }
+  .teaser-cta { margin-top: 2rem; }
+
+  @media (max-width: 1023px) {
+    .problem-pull, .problem-copy, .worked-copy, .worked-viz,
+    .teaser-lead, .teaser-body { grid-column: 1 / -1; }
+    .method-cards { grid-template-columns: 1fr; }
+    .method-card { min-height: 0; }
+    .hero { margin-top: -64px; }
+    .hero-inner { padding-top: 64px; }
+  }
+</style>
+
+<script>
+  import '../scripts/home.js';
+</script>

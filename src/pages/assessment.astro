@@ -1,0 +1,435 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const title = 'The Revenue Assessment | Nascent Strategy';
+const description =
+  'A four-week, fixed-fee diagnosis that finds where your revenue is leaking and hands you a ranked roadmap of what’s worth fixing. $9,500.';
+
+const faqs = [
+  {
+    q: 'Do we need to buy new software first?',
+    a: 'No. The assessment runs on what you already own, plus the market data we bring. If something new is genuinely needed, it shows up as a recommendation on the roadmap, with a cost attached, for you to decide.',
+  },
+  {
+    q: 'What if our problem isn’t a data problem?',
+    a: 'Then we find it through the other lens. Plenty of revenue leaks aren’t hiding in your numbers, they’re hiding in how the work gets done. We look for both, every time.',
+  },
+  {
+    q: 'What do you need from us during the four weeks?',
+    a: 'One workshop with your leadership team in week one, system and process access coordinated with whoever runs your tools, and 90 minutes for the final readout. We’re built to be light on your calendar.',
+  },
+  {
+    q: 'Is our data safe?',
+    a: 'Your data stays in your systems and your accounts. Where we deploy AI tooling, it runs in a workspace your business controls, under commercial terms that exclude training on your data. We’ll walk through the specifics before anything connects.',
+  },
+  {
+    q: 'What if our data is a mess?',
+    a: 'That’s common, and it’s useful information. The roadmap will tell you exactly what’s usable today, what needs cleaning first, and what the cleaning costs. Messy data changes the sequence, not the destination.',
+  },
+  {
+    q: 'Why is the price on the website?',
+    a: 'Because you shouldn’t have to sit through a sales call to learn what something costs.',
+  },
+];
+
+const steps = [
+  {
+    label: 'Week 1 / See',
+    body: 'We sit with your leadership team to surface the revenue questions you can’t answer and the workflows that cost you time. We map every system you run and where our market data can add a view you don’t have.',
+  },
+  {
+    label: 'Weeks 2 and 3 / Solve',
+    body: 'We test what your data can actually tell you, study where the friction really lives, and cost each leak in dollars and hours. Honest answers only: if a leak isn’t worth chasing, it doesn’t make the roadmap.',
+  },
+  {
+    label: 'Week 4 / The Roadmap',
+    body: 'We deliver your leaks ranked by dollar value and effort to fix, in a 90-minute working session with your team, with a clear recommended first move.',
+  },
+  {
+    label: 'After / Your Call',
+    body: 'Run the roadmap yourself, hand it to anyone you like, or have us build the first fix. The roadmap is yours either way.',
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      name: 'The Revenue Assessment',
+      serviceType: 'AI strategy assessment',
+      provider: { '@type': 'Organization', name: 'Nascent Strategy', url: 'https://nascentstrategy.com' },
+      description:
+        'A fixed-fee, four-week diagnosis that finds where a business is leaking revenue, across data and workflow, and delivers a ranked roadmap of what is worth fixing.',
+      offers: {
+        '@type': 'Offer',
+        price: '9500',
+        priceCurrency: 'USD',
+        url: 'https://nascentstrategy.com/assessment',
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} schema={schema}>
+  <script is:inline slot="head">
+    (function () {
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('resolve-pending');
+        setTimeout(function () {
+          document.documentElement.classList.remove('resolve-pending');
+        }, 2000);
+      }
+    })();
+  </script>
+
+  <!-- ASM-01 Hero: price and duration above the fold -->
+  <section class="page-hero asm-hero">
+    <div class="wrap">
+      <span class="eyebrow hero-support">The Revenue Assessment</span>
+      <h1 class="resolve-target asm-h1" id="resolve-h1">
+        Four weeks to find where your revenue is leaking.
+      </h1>
+      <p class="lede asm-sub hero-support">
+        A fixed-fee diagnosis that looks at your business through both lenses,
+        what you can&rsquo;t see and where you lose time, and hands you a
+        ranked roadmap of what&rsquo;s worth fixing.
+      </p>
+      <p class="asm-priceline mono hero-support">
+        $9,500 fixed&ensp;|&ensp;4 weeks&ensp;|&ensp;No hourly billing
+      </p>
+      <p class="asm-hero-cta hero-support">
+        <a class="btn btn-primary" href="/contact">
+          Book an assessment
+          <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ASM-02 Week-by-week timeline -->
+  <section class="section weeks">
+    <div class="wrap grid weeks-grid">
+      <h2 class="visually-hidden">The four week timeline</h2>
+      <ol class="timeline" id="timeline">
+        <span class="timeline-rail" aria-hidden="true">
+          <span class="timeline-fill" id="timeline-fill"></span>
+        </span>
+        {steps.map((s) => (
+          <li class="timeline-step">
+            <span class="timeline-marker" aria-hidden="true"></span>
+            <h3 class="timeline-label mono reveal">{s.label}</h3>
+            <p class="timeline-body reveal">{s.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <hr class="hr wrap-rule" />
+
+  <!-- ASM-03 Deliverables -->
+  <section class="section deliverables">
+    <div class="wrap">
+      <h2 class="reveal">What you walk away with</h2>
+      <div class="deliverable-cards stagger">
+        <div class="card reveal">
+          <h3>The Leak Map</h3>
+          <p>
+            Where your business loses revenue, across both lenses, with each
+            leak named and costed in dollars or hours.
+          </p>
+        </div>
+        <div class="card reveal">
+          <h3>The Systems and Workflow Map</h3>
+          <p>
+            Every tool and process you run, what each can and can&rsquo;t do
+            for you, and where our market data fills a gap your own data
+            can&rsquo;t.
+          </p>
+        </div>
+        <div class="card reveal">
+          <h3>The Revenue Roadmap</h3>
+          <p>
+            Your opportunities ranked by value and effort, with a recommended
+            first move and the return it should produce.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASM-04 Pricing block -->
+  <section class="section pricing on-ink">
+    <div class="wrap grid pricing-grid">
+      <h2 class="pricing-headline reveal">
+        <span class="pricing-figure mono figure-ember"><span data-countup="9500" data-prefix="$">$9,500</span>.</span>
+        <span class="pricing-rest">Fixed. That&rsquo;s it.</span>
+      </h2>
+      <div class="pricing-copy reveal">
+        <p class="pricing-body">
+          No hourly billing, no scope creep, no surprise invoices. If we find
+          nothing worth pursuing, the roadmap tells you that too, and
+          you&rsquo;ve spent less than one month of a bad hire to learn it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASM-05 Fit qualifier -->
+  <section class="section fit">
+    <div class="wrap grid fit-grid">
+      <div class="fit-col reveal">
+        <h2 class="fit-headline">This is for you if</h2>
+        <ul class="fit-list">
+          <li>You run a business doing roughly $2M to $50M in revenue.</li>
+          <li>You&rsquo;ve ever said &ldquo;I wish I knew why&rdquo; about your own numbers.</li>
+          <li>You&rsquo;ve got a process or a tool your team tolerates rather than trusts.</li>
+          <li>You want AI to mean dollars and hours, not demos.</li>
+        </ul>
+      </div>
+      <div class="fit-col reveal">
+        <h2 class="fit-headline">This is not for you if</h2>
+        <ul class="fit-list fit-list-not">
+          <li>You want a chatbot on your website by Friday.</li>
+          <li>You&rsquo;re looking for the cheapest possible AI vendor.</li>
+          <li>You&rsquo;d rather have a 60-slide strategy deck than a list of fixes worth building.</li>
+          <li>You want the software without the diagnosis. We diagnose first, always.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr wrap-rule" />
+
+  <!-- ASM-06 What happens after -->
+  <section class="section after">
+    <div class="wrap grid after-grid">
+      <h2 class="after-headline reveal">Most roadmaps point somewhere. We can take you there.</h2>
+      <p class="after-body reveal">
+        When the assessment surfaces a leak worth closing, we scope the build
+        against the dollars we found, not against hours. Whether it&rsquo;s a
+        dashboard that finally shows you the truth or custom software that
+        erases the friction, every build ships with a baseline and an
+        optimization retainer, so the system keeps earning long after launch
+        day.
+      </p>
+    </div>
+  </section>
+
+  <!-- ASM-07 FAQ -->
+  <section class="section faq-section">
+    <div class="wrap grid faq-grid">
+      <div class="faq-list">
+        {faqs.map((f) => (
+          <details class="faq reveal" name="faq">
+            <summary class="faq-q">
+              <span>{f.q}</span>
+              <svg class="faq-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </summary>
+            <div class="faq-a-wrap"><p class="faq-a">{f.a}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ASM-08 Closing CTA -->
+  <CtaSection
+    headline="Four weeks from now, you could be reading the roadmap."
+    ctaLabel="Book an assessment"
+    ctaHref="/contact"
+  />
+</Base>
+
+<style>
+  .page-hero {
+    padding-top: calc(var(--section-pad) * 1.1);
+    padding-bottom: var(--section-pad);
+  }
+  .asm-h1 { max-width: 17ch; }
+  .asm-sub { margin-top: 1.75rem; max-width: 50ch; }
+  .asm-priceline {
+    margin-top: 2.25rem;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    width: fit-content;
+    padding: 0.875rem 1.25rem;
+  }
+  .asm-hero-cta { margin-top: 2.25rem; }
+
+  /* ASM-02 timeline */
+  .weeks-grid { row-gap: 3.5rem; }
+  .timeline {
+    grid-column: 3 / span 8;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+  .timeline-rail {
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: var(--hairline);
+  }
+  .timeline-fill {
+    position: absolute;
+    inset: 0;
+    background: var(--signal);
+    transform-origin: top;
+    transform: scaleY(var(--draw, 0));
+  }
+  html.no-js .timeline-fill { transform: scaleY(1); }
+  .timeline-step { position: relative; max-width: 56ch; }
+  .timeline-marker {
+    position: absolute;
+    left: calc(-2.5rem + 1px);
+    top: 0.3em;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 1px solid var(--hairline);
+    background: var(--paper);
+    transition: background-color 300ms var(--ease-out), border-color 300ms var(--ease-out);
+  }
+  .timeline-step.is-reached .timeline-marker,
+  html.no-js .timeline-marker {
+    background: var(--signal);
+    border-color: var(--signal);
+  }
+  .timeline-label {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-variation-settings: normal;
+  }
+  .timeline-body { margin-top: 0.75rem; color: var(--slate); }
+
+  /* ASM-03 */
+  .deliverable-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+  .deliverable-cards .card h3 { font-size: 1.25rem; max-width: 14ch; }
+  .deliverable-cards .card p { margin-top: 1rem; color: var(--slate); font-size: 0.9844rem; }
+
+  /* ASM-04 */
+  .pricing-grid { align-items: end; row-gap: 3rem; }
+  .pricing-headline { grid-column: 1 / span 6; }
+  .pricing-figure {
+    display: block;
+    font-size: clamp(4rem, 8vw, 6.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variation-settings: normal;
+  }
+  .pricing-figure [data-countup] { font: inherit; }
+  .pricing-rest {
+    display: block;
+    margin-top: 1.5rem;
+    font-size: var(--text-h2);
+  }
+  .pricing-copy { grid-column: 8 / -1; }
+  .pricing-body { color: var(--slate-on-ink); }
+
+  /* ASM-05 */
+  .fit-grid { row-gap: 3rem; }
+  .fit-col:first-child { grid-column: 1 / span 5; }
+  .fit-col:last-child { grid-column: 7 / -1; }
+  .fit-headline { font-size: 1.625rem; }
+  .fit-list {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .fit-list li {
+    padding: 1.125rem 0 1.125rem 1.75rem;
+    position: relative;
+    border-top: 1px solid var(--hairline);
+    color: var(--slate);
+  }
+  .fit-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.85em;
+    width: 8px;
+    height: 1px;
+    background: var(--signal);
+  }
+  .fit-list-not li::before { background: var(--slate); }
+
+  /* ASM-06 */
+  .after-grid { row-gap: 2rem; }
+  .after-headline { grid-column: 1 / span 6; max-width: 16ch; }
+  .after-body { grid-column: 8 / -1; color: var(--slate); align-self: end; }
+
+  /* ASM-07 FAQ */
+  .faq-grid { row-gap: 3rem; }
+  .faq-list { grid-column: 3 / span 8; }
+  .faq {
+    border-top: 1px solid var(--hairline);
+  }
+  .faq:last-child { border-bottom: 1px solid var(--hairline); }
+  .faq-q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.375rem 0;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.0625rem;
+    list-style: none;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-chevron {
+    flex: none;
+    color: var(--slate);
+    transition: transform var(--dur-hover) var(--ease-out);
+  }
+  .faq[open] .faq-chevron { transform: rotate(180deg); }
+  .faq.closing .faq-chevron { transform: none; }
+  .faq-a-wrap { overflow: hidden; }
+  .faq-a { padding: 0 0 1.5rem; color: var(--slate); max-width: 60ch; }
+
+  @media (max-width: 1023px) {
+    .timeline, .fit-col:first-child, .fit-col:last-child,
+    .after-headline, .after-body, .faq-list,
+    .pricing-headline, .pricing-copy { grid-column: 1 / -1; }
+    .deliverable-cards { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  import '../scripts/assessment.js';
+</script>
