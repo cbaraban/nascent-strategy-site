@@ -156,6 +156,10 @@ const links = [
     opacity: 0;
     transition: opacity 250ms var(--ease-out);
   }
+  /* When closed, the overlay must not exist in the layer stack, or its
+     fixed full-viewport box silently intercepts every click. Author CSS
+     above would otherwise override the UA [hidden] rule. */
+  .mobile-menu[hidden] { display: none; }
   .mobile-menu.is-open { opacity: 1; }
   .mobile-menu.is-closing { transition-duration: 150ms; }
 
