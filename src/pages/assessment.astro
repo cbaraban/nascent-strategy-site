@@ -4,51 +4,51 @@ import CtaSection from '../components/CtaSection.astro';
 
 const title = 'The Revenue Assessment | Nascent Strategy';
 const description =
-  'A four-week, fixed-fee diagnosis that finds where your revenue is leaking and hands you a ranked roadmap of what’s worth fixing. $9,500.';
+  'We help businesses find the clarity already inside them, then build what makes it useful. Kansas City, built for anywhere.';
 
 const faqs = [
   {
     q: 'Do we need to buy new software first?',
-    a: 'No. The assessment runs on what you already own, plus the market data we bring. If something new is genuinely needed, it shows up as a recommendation on the roadmap, with a cost attached, for you to decide.',
+    a: 'No. The assessment runs on what you already own, plus the market data we bring. If something new is genuinely needed, it shows up on the roadmap with a cost attached, for you to decide.',
   },
   {
-    q: 'What if our problem isn’t a data problem?',
-    a: 'Then we find it through the other lens. Plenty of revenue leaks aren’t hiding in your numbers, they’re hiding in how the work gets done. We look for both, every time.',
+    q: 'What if our problem isn’t really a data problem?',
+    a: 'Then we find it through the other lens. Plenty of opportunity isn’t hiding in the numbers, it’s hiding in how the work gets done. We look at both, every time.',
   },
   {
     q: 'What do you need from us during the four weeks?',
-    a: 'One workshop with your leadership team in week one, system and process access coordinated with whoever runs your tools, and 90 minutes for the final readout. We’re built to be light on your calendar.',
+    a: 'One workshop with your leadership in week one, access to your systems and processes, and 90 minutes for the readout. We’re built to be light on your calendar.',
   },
   {
     q: 'Is our data safe?',
-    a: 'Your data stays in your systems and your accounts. Where we deploy AI tooling, it runs in a workspace your business controls, under commercial terms that exclude training on your data. We’ll walk through the specifics before anything connects.',
+    a: 'It stays in your systems and your accounts. Where we deploy AI tooling, it runs in a workspace you control, under terms that exclude training on your data. We walk through the specifics before anything connects.',
   },
   {
     q: 'What if our data is a mess?',
-    a: 'That’s common, and it’s useful information. The roadmap will tell you exactly what’s usable today, what needs cleaning first, and what the cleaning costs. Messy data changes the sequence, not the destination.',
+    a: 'Common, and useful to know. The roadmap tells you what’s usable now, what needs cleaning first, and what that costs. Messy data changes the sequence, not the destination.',
   },
   {
     q: 'Why is the price on the website?',
-    a: 'Because you shouldn’t have to sit through a sales call to learn what something costs.',
+    a: 'Because you shouldn’t have to sit through a sales call to find out what something costs.',
   },
 ];
 
 const steps = [
   {
     label: 'Week 1 / See',
-    body: 'We sit with your leadership team to surface the revenue questions you can’t answer and the workflows that cost you time. We map every system you run and where our market data can add a view you don’t have.',
+    body: 'We sit with your team and take the instinct seriously. What do you suspect is true? Then we map the systems, workflows, and data that might prove it, and where our market data can add a view you don’t have.',
   },
   {
     label: 'Weeks 2 and 3 / Solve',
-    body: 'We test what your data can actually tell you, study where the friction really lives, and cost each leak in dollars and hours. Honest answers only: if a leak isn’t worth chasing, it doesn’t make the roadmap.',
+    body: 'We test what your data can actually tell you, look closely at where the friction lives, and cost each opportunity honestly. If something isn’t worth pursuing, we’ll say so.',
   },
   {
     label: 'Week 4 / The Roadmap',
-    body: 'We deliver your leaks ranked by dollar value and effort to fix, in a 90-minute working session with your team, with a clear recommended first move.',
+    body: 'We deliver a ranked picture of the opportunities, ordered by what pays back first, in a 90-minute working session with your team.',
   },
   {
     label: 'After / Your Call',
-    body: 'Run the roadmap yourself, hand it to anyone you like, or have us build the first fix. The roadmap is yours either way.',
+    body: 'Take it and run, hand it to anyone you like, or have us build the first piece. The picture is yours either way.',
   },
 ];
 
@@ -61,7 +61,7 @@ const schema = {
       serviceType: 'AI strategy assessment',
       provider: { '@type': 'Organization', name: 'Nascent Strategy', url: 'https://nascentstrategy.com' },
       description:
-        'A fixed-fee, four-week diagnosis that finds where a business is leaking revenue, across data and workflow, and delivers a ranked roadmap of what is worth fixing.',
+        'A fixed-fee, four-week diagnosis that looks at a business through two lenses, what it cannot yet see and where the work gets stuck, and delivers a clear, costed picture of where the opportunity is.',
       offers: {
         '@type': 'Offer',
         price: '9500',
@@ -98,12 +98,12 @@ const schema = {
     <div class="wrap">
       <span class="eyebrow hero-support">The Revenue Assessment</span>
       <h1 class="resolve-target asm-h1" id="resolve-h1">
-        Four weeks to find where your revenue is leaking.
+        Four weeks to turn an instinct into a plan.
       </h1>
       <p class="lede asm-sub hero-support">
         A fixed-fee diagnosis that looks at your business through both lenses,
-        what you can&rsquo;t see and where you lose time, and hands you a
-        ranked roadmap of what&rsquo;s worth fixing.
+        what you can&rsquo;t yet see and where the work gets stuck, and gives
+        you a clear, costed picture of where the opportunity is.
       </p>
       <p class="asm-priceline mono hero-support">
         $9,500 fixed&ensp;|&ensp;4 weeks&ensp;|&ensp;No hourly billing
@@ -146,24 +146,24 @@ const schema = {
       <h2 class="reveal">What you walk away with</h2>
       <div class="deliverable-cards stagger">
         <div class="card reveal">
-          <h3>The Leak Map</h3>
+          <h3>The Read</h3>
           <p>
-            Where your business loses revenue, across both lenses, with each
-            leak named and costed in dollars or hours.
+            A clear account of where your business is leaving opportunity on
+            the table, across both lenses, in plain terms.
           </p>
         </div>
         <div class="card reveal">
-          <h3>The Systems and Workflow Map</h3>
+          <h3>The Map</h3>
           <p>
-            Every tool and process you run, what each can and can&rsquo;t do
-            for you, and where our market data fills a gap your own data
-            can&rsquo;t.
+            Every system and process you run, what each can and can&rsquo;t
+            tell you, and where our market data fills the gaps your own data
+            leaves.
           </p>
         </div>
         <div class="card reveal">
-          <h3>The Revenue Roadmap</h3>
+          <h3>The Roadmap</h3>
           <p>
-            Your opportunities ranked by value and effort, with a recommended
+            The opportunities ranked by value and effort, with a recommended
             first move and the return it should produce.
           </p>
         </div>
@@ -176,13 +176,14 @@ const schema = {
     <div class="wrap grid pricing-grid">
       <h2 class="pricing-headline reveal">
         <span class="pricing-figure mono figure-ember"><span data-countup="9500" data-prefix="$">$9,500</span>.</span>
-        <span class="pricing-rest">Fixed. That&rsquo;s it.</span>
+        <span class="pricing-rest">Fixed.</span>
       </h2>
       <div class="pricing-copy reveal">
         <p class="pricing-body">
           No hourly billing, no scope creep, no surprise invoices. If we find
           nothing worth pursuing, the roadmap tells you that too, and
-          you&rsquo;ve spent less than one month of a bad hire to learn it.
+          you&rsquo;ve spent less than a month of a bad hire to know it for
+          certain.
         </p>
       </div>
     </div>
@@ -195,18 +196,18 @@ const schema = {
         <h2 class="fit-headline">This is for you if</h2>
         <ul class="fit-list">
           <li>You run a business doing roughly $2M to $50M in revenue.</li>
-          <li>You&rsquo;ve ever said &ldquo;I wish I knew why&rdquo; about your own numbers.</li>
+          <li>You&rsquo;ve got an instinct about your business you&rsquo;ve never been able to prove.</li>
           <li>You&rsquo;ve got a process or a tool your team tolerates rather than trusts.</li>
-          <li>You want AI to mean dollars and hours, not demos.</li>
+          <li>You want AI to mean better decisions, not a better demo.</li>
         </ul>
       </div>
       <div class="fit-col reveal">
         <h2 class="fit-headline">This is not for you if</h2>
         <ul class="fit-list fit-list-not">
-          <li>You want a chatbot on your website by Friday.</li>
-          <li>You&rsquo;re looking for the cheapest possible AI vendor.</li>
-          <li>You&rsquo;d rather have a 60-slide strategy deck than a list of fixes worth building.</li>
-          <li>You want the software without the diagnosis. We diagnose first, always.</li>
+          <li>You want to check the AI box.</li>
+          <li>You&rsquo;re looking for the cheapest vendor in the room.</li>
+          <li>You&rsquo;d rather have a thick strategy deck than a clear thing to build.</li>
+          <li>You want clarity without the accountability that comes with it. The work only matters if you&rsquo;re willing to act on what it shows.</li>
         </ul>
       </div>
     </div>
@@ -217,14 +218,12 @@ const schema = {
   <!-- ASM-06 What happens after -->
   <section class="section after">
     <div class="wrap grid after-grid">
-      <h2 class="after-headline reveal">Most roadmaps point somewhere. We can take you there.</h2>
+      <h2 class="after-headline reveal">Most of the time, the roadmap points somewhere worth going.</h2>
       <p class="after-body reveal">
-        When the assessment surfaces a leak worth closing, we scope the build
-        against the dollars we found, not against hours. Whether it&rsquo;s a
-        dashboard that finally shows you the truth or custom software that
-        erases the friction, every build ships with a baseline and an
-        optimization retainer, so the system keeps earning long after launch
-        day.
+        When it does, we scope the build against the opportunity we found, not
+        against hours. A view that finally shows you the signal, or software
+        that takes out the friction. Every build ships with a baseline and an
+        optimization retainer, so it keeps earning long after launch.
       </p>
     </div>
   </section>
@@ -250,7 +249,7 @@ const schema = {
 
   <!-- ASM-08 Closing CTA -->
   <CtaSection
-    headline="Four weeks from now, you could be reading the roadmap."
+    headline="Four weeks from now, you could be holding the plan."
     ctaLabel="Book an assessment"
     ctaHref="/contact"
   />
